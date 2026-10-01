@@ -575,15 +575,30 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           </div>
         </div>
 
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3 text-[11px] text-amber-200 space-y-1">
-          <p className="font-semibold flex items-center gap-1.5 text-amber-300">
-            <span>💡 Keunggulan Versi Portabel (.EXE):</span>
-          </p>
-          <ul className="list-disc list-inside space-y-0.5 text-slate-300 pl-1 text-[11px]">
-            <li>File tunggal mandiri: bebas dipindahkan ke Flashdisk dan dijalankan di komputer kantor sekolah mana saja.</li>
-            <li>Database guru, profil sekolah, dan draf SK tetap tersimpan secara aman di komputer lokal.</li>
-            <li>Tersedia menu pintas Windows (Cetak Ctrl+P, Layar Penuh F11, Muat Ulang Ctrl+R).</li>
-          </ul>
+        <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-indigo-800/60">
+          <a
+            href="/api/download/paket-lengkap-zip"
+            download="Aplikasi-SK-Sekolah-Lengkap.zip"
+            className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs font-bold px-4 py-2 rounded-lg shadow-md transition-colors cursor-pointer"
+          >
+            <Download className="w-4 h-4 text-slate-950" />
+            <span>Unduh Paket Lengkap Proyek (.ZIP)</span>
+          </a>
+          <a
+            href="/api/download/buat-exe-bat"
+            download="BUAT_EXE_PORTABEL.bat"
+            className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-sm transition-colors cursor-pointer"
+          >
+            <Download className="w-4 h-4" />
+            <span>Unduh Script .BAT Terbaru</span>
+          </a>
+          <a
+            href="/api/download/panduan-exe"
+            download="PANDUAN_EXE_PORTABEL.md"
+            className="flex items-center gap-2 border border-slate-400/40 hover:bg-white/10 text-slate-200 text-xs font-medium px-3 py-2 rounded-lg transition-colors cursor-pointer"
+          >
+            <span>Panduan .MD</span>
+          </a>
         </div>
       </div>
 

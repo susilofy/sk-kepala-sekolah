@@ -15,6 +15,7 @@ import {
   Award,
   Sparkles,
   ClipboardCheck,
+  Laptop,
 } from "lucide-react";
 import { exportSKToDocx } from "../utils/docxGenerator";
 
@@ -25,6 +26,7 @@ interface DashboardViewProps {
   onOpenNewSK: () => void;
   onPreviewSK: (doc: SKDocument) => void;
   onOpenAssistant: () => void;
+  onOpenPortableModal?: () => void;
   onNavigateTab: (tab: string, filterStatus?: string) => void;
 }
 
@@ -35,6 +37,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   onOpenNewSK,
   onPreviewSK,
   onOpenAssistant,
+  onOpenPortableModal,
   onNavigateTab,
 }) => {
   const publishedDocs = documents.filter(
@@ -94,6 +97,17 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <Bot className="w-4 h-4 text-emerald-400" />
               <span>Konsultasi AI Asisten KS</span>
             </button>
+
+            {onOpenPortableModal && (
+              <button
+                id="btn-dash-portable-exe"
+                onClick={onOpenPortableModal}
+                className="flex items-center gap-2 bg-indigo-700/80 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-xs font-semibold border border-indigo-500/40 transition-all cursor-pointer"
+              >
+                <Laptop className="w-4 h-4 text-indigo-300" />
+                <span>Aplikasi .EXE Portabel</span>
+              </button>
+            )}
           </div>
         </div>
 

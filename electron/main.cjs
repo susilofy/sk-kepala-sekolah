@@ -86,6 +86,92 @@ function getDataDirectory() {
   return path.join(app.getPath("userData"), "data-sekolah");
 }
 
+// Simple parser for .env files without extra dependencies
+function parseEnvFile(filePath) {
+  const result = {};
+  if (!fs.existsSync(filePath)) return result;
+  try {
+    const content = fs.readFileSync(filePath, "utf-8");
+    const lines = content.split(/\r?\n/);
+    for (const rawLine of lines) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith("#")) continue;
+      const eqIdx = line.indexOf("=");
+      if (eqIdx > 0) {
+        const key = line.slice(0, eqIdx).trim();
+        let val = line.slice(eqIdx + 1).trim();
+        if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+          val = val.slice(1, -1);
+        }
+        result[key] = val;
+      }
+    }
+  } catch (e) {
+    console.warn("Could not read .env file at:", filePath, e);
+  }
+  return result;
+}
+
+// Ensure helpful AI instructions file is present in data directory
+function ensureAIInstructions(dataDir) {
+  try {
+    const guidePath = path.join(dataDir, "PETUNJUK_MENGAKTIFKAN_AI.txt");
+    const exampleEnvPath = path.join(dataDir, ".env.example");
+    if (!fs.existsSync(guidePath)) {
+      const guideText = `========================================================================
+PANDUAN MENGAKTIFKAN FITUR AI GOOGLE GEMINI DI APLIKASI DESKTOP
+Aplikasi SK & Surat Tugas Sekolah - SDN 3 Loloan Timur
+========================================================================
+
+Fitur AI (Pembuat SK Otomatis & Asisten Konsultasi Regulasi) menggunakan
+teknologi resmi Google Gemini.
+
+Di komputer lokal/laptop setelah diinstal, fitur AI memerlukan:
+1. Koneksi Internet aktif pada saat memproses draf AI.
+2. Kunci Akses (Gemini API Key) dari Google AI Studio (100% GRATIS).
+
+------------------------------------------------------------------------
+CARA MENDAPATKAN DAN MEMASANG API KEY (HANYA SEKALI):
+------------------------------------------------------------------------
+Langkah 1:
+- Buka browser dan buka alamat: https://aistudio.google.com/apikey
+- Masuk dengan akun Google (Gmail) Anda.
+- Klik tombol biru "Create API key".
+- Salin kunci API yang muncul (kode diawali 'AIzaSy...').
+
+Langkah 2:
+- Di dalam folder ini (${dataDir}), buat atau edit file bernama:
+  .env
+  (atau salin file .env.example menjadi .env)
+
+Langkah 3:
+- Buka file .env tersebut dengan Notepad, lalu isi baris berikut:
+  GEMINI_API_KEY=AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+- Simpan (Save/Ctrl+S) file tersebut.
+
+Langkah 4:
+- Tutup dan buka kembali Aplikasi SK Sekolah.
+- Fitur Asisten AI dan Generator SK Cerdas kini langsung aktif penuh!
+
+Catatan:
+Jika komputer sedang offline (tanpa internet) atau tanpa kunci API,
+aplikasi TETAP BISA DIGUNAKAN 100% untuk menyusun SK dan Surat Tugas
+menggunakan template dinas standar bawaan yang sudah lengkap di aplikasi.
+========================================================================`;
+      fs.writeFileSync(guidePath, guideText, "utf-8");
+    }
+
+    if (!fs.existsSync(exampleEnvPath)) {
+      fs.writeFileSync(
+        exampleEnvPath,
+        `# Masukkan Gemini API Key gratis Anda dari https://aistudio.google.com/apikey\nGEMINI_API_KEY=\n`,
+        "utf-8"
+      );
+    }
+  } catch (err) {}
+}
+
 async function startBackendServer(port) {
   const isDev = !app.isPackaged && process.env.NODE_ENV === "development";
   const dataDir = getDataDirectory();
@@ -96,12 +182,30 @@ async function startBackendServer(port) {
     } catch (e) {}
   }
 
+  ensureAIInstructions(dataDir);
+
+  // Discover and merge .env from candidate locations (portable exe folder, data-sekolah, app root)
+  const candidateEnvs = [
+    path.join(process.cwd(), ".env"),
+    path.join(dataDir, ".env"),
+    path.join(path.dirname(app.getPath("exe")), ".env"),
+    path.join(__dirname, "../.env"),
+  ];
+
+  const loadedEnv = {};
+  for (const envFile of candidateEnvs) {
+    if (fs.existsSync(envFile)) {
+      Object.assign(loadedEnv, parseEnvFile(envFile));
+    }
+  }
+
   const serverScript = isDev
     ? path.join(__dirname, "../server.ts")
     : path.join(__dirname, "../dist/server.cjs");
 
   const env = {
     ...process.env,
+    ...loadedEnv,
     PORT: String(port),
     NODE_ENV: isDev ? "development" : "production",
     APP_DATA_PATH: dataDir,
@@ -264,6 +368,32 @@ function buildAppMenu() {
       label: "Bantuan",
       submenu: [
         {
+          label: "Petunjuk Mengaktifkan Fitur AI (Google Gemini)",
+          click: () => {
+            const dataDir = getDataDirectory();
+            const guidePath = path.join(dataDir, "PETUNJUK_MENGAKTIFKAN_AI.txt");
+            if (fs.existsSync(guidePath)) {
+              shell.openPath(guidePath);
+            } else {
+              shell.openPath(dataDir);
+            }
+          },
+        },
+        {
+          label: "Dapatkan Gemini API Key Gratis di Google AI Studio",
+          click: () => {
+            shell.openExternal("https://aistudio.google.com/apikey");
+          },
+        },
+        { type: "separator" },
+        {
+          label: "Buka Folder Data & Pengaturan (.env)",
+          click: () => {
+            shell.openPath(getDataDirectory());
+          },
+        },
+        { type: "separator" },
+        {
           label: "Tentang Aplikasi SK Sekolah",
           click: () => {
             dialog.showMessageBox(mainWindow, {
@@ -278,7 +408,8 @@ function buildAppMenu() {
                 "• Penyusunan SK Dinas Standar Regulasi Kemendikdasmen\n" +
                 "• Pembuatan Surat Perintah Tugas (SPT) Resmi\n" +
                 "• Ekspor Dokumen Word (.docx) & Siap Cetak A4\n" +
-                "• Bekerja Mandiri & Tersimpan Aman Tanpa Internet",
+                "• Bekerja Mandiri & Tersimpan Aman Tanpa Internet\n" +
+                "• Integrasi Google Gemini AI untuk Pembuatan Draf Cerdas",
               buttons: ["Tutup"],
             });
           },

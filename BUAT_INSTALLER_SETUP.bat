@@ -1,6 +1,12 @@
 @echo off
-chcp 65001 >nul
-title Pembuat Installer Setup (.exe) - SK Sekolah
+:: =====================================================================
+:: SKRIP PEMBUAT INSTALLER SETUP (.EXE)
+:: Aplikasi SK & Surat Tugas Sekolah - SDN 3 Loloan Timur
+:: =====================================================================
+
+cd /d "%~dp0"
+color 1F
+title Pembuat Installer Setup (.exe) - SDN 3 Loloan Timur
 cls
 
 echo =====================================================================
@@ -9,34 +15,51 @@ echo       Aplikasi SK & Surat Tugas Sekolah - SDN 3 Loloan Timur
 echo =====================================================================
 echo.
 
-where node >nul 2>nul
-if %errorlevel% neq 0 (
-    echo [ERROR] Node.js belum terpasang. Unduh di https://nodejs.org
-    pause
+if not exist "package.json" (
+    echo [PERINGATAN] Berkas package.json tidak ditemukan di folder ini.
+    echo File ini harus dijalankan di dalam folder proyek aplikasi hasil ekstrak ZIP.
+    echo.
+    echo Tekan tombol apa saja untuk menutup...
+    pause >nul
     exit /b 1
 )
 
-if not exist "node_modules" (
-    echo Memasang dependensi...
-    call npm install
+node -v >nul 2>&1
+if errorlevel 1 (
+    echo [PERINGATAN] Node.js belum terpasang di komputer Anda.
+    echo Silakan unduh dan pasang Node.js LTS terlebih dahulu di https://nodejs.org/
+    echo.
+    echo Tekan tombol apa saja untuk menutup...
+    pause >nul
+    exit /b 1
 )
 
-echo [1/2] Melakukan build berkas...
+if not exist "node_modules\vite" (
+    echo Mengunduh paket modul yang dibutuhkan...
+    call npm install --legacy-peer-deps
+)
+
+echo [1/2] Menyusun aset aplikasi (npm run build)...
 call npm run build
-
-echo [2/2] Mengemas installer setup Windows...
-call npx electron-builder --config electron-builder.json --win nsis
-
-if %errorlevel% equ 0 (
-    echo.
-    echo =====================================================================
-    echo SUKSES! Installer Setup tersimpan di folder dist-electron\
-    echo =====================================================================
-    if exist "dist-electron" (
-        explorer dist-electron
-    )
-) else (
-    echo.
-    echo [ERROR] Terjadi kendala saat membuat installer.
+if errorlevel 1 (
+    echo [ERROR] Gagal menyusun kode aplikasi.
+    pause >nul
+    exit /b 1
 )
-pause
+
+echo [2/2] Mengemas installer setup Windows (NSIS)...
+call npx electron-builder --config electron-builder.json --win nsis
+if errorlevel 1 (
+    echo [ERROR] Gagal membuat file installer.
+    pause >nul
+    exit /b 1
+)
+
+echo.
+echo =====================================================================
+echo SUKSES! File Installer Setup berhasil dibuat:
+echo dist-electron\Aplikasi-SK-Sekolah-Setup.exe
+echo =====================================================================
+echo.
+if exist "dist-electron" explorer dist-electron
+pause >nul

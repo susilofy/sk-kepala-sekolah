@@ -10,12 +10,14 @@ import {
   Sparkles,
   PlusCircle,
   ClipboardCheck,
+  Laptop,
 } from "lucide-react";
 
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   onOpenNewSK: () => void;
+  onOpenPortableModal?: () => void;
   schoolName: string;
   headmasterName: string;
 }
@@ -24,6 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   setActiveTab,
   onOpenNewSK,
+  onOpenPortableModal,
   schoolName,
   headmasterName,
 }) => {
@@ -62,7 +65,19 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
+          {onOpenPortableModal && (
+            <button
+              id="btn-nav-portable-exe"
+              onClick={onOpenPortableModal}
+              className="hidden sm:flex items-center gap-1.5 bg-indigo-600/70 hover:bg-indigo-600 text-indigo-100 hover:text-white px-3 py-1.5 rounded-lg text-xs font-semibold border border-indigo-500/40 transition-all cursor-pointer shadow-sm"
+              title="Panduan dan pembuatan file EXE Desktop Portabel"
+            >
+              <Laptop className="w-3.5 h-3.5 text-indigo-300" />
+              <span>Aplikasi .EXE</span>
+            </button>
+          )}
+
           <button
             id="btn-quick-new-sk"
             onClick={onOpenNewSK}

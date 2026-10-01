@@ -66,7 +66,16 @@ Jika Anda terbiasa menggunakan baris perintah (Terminal/CMD/PowerShell):
 1. **Peringatan Windows SmartScreen ("Windows protected your PC"):**
    Karena aplikasi ini dikompilasi secara mandiri (self-compiled) dan belum membeli sertifikat tanda tangan digital komersial berbayar (EV Code Signing Certificate), Windows SmartScreen mungkin menampilkan layar biru peringatan pada pembukaan pertama kali.
    - Solusi: Cukup klik **"More info" (Info selengkapnya)** -> lalu klik tombol **"Run anyway" (Tetap jalankan)**.
-2. **Koneksi Fitur AI:**
-   Fitur AI Generator dan AI Chatbot membutuhkan koneksi internet dan API Key Gemini (opsional). Jika dijalankan secara offline, seluruh generator standar regulasi dinas, cetak A4, dan ekspor .docx tetap bekerja 100% normal.
+2. **Koneksi & Cara Mengaktifkan Fitur AI (Google Gemini):**
+   - **Mode Offline (Tanpa Internet / Tanpa API Key):** Aplikasi tetap dapat digunakan 100% untuk menyusun seluruh jenis SK sekolah, menyusun Surat Tugas (SPT), mencetak dokumen format resmi A4, dan ekspor ke file Microsoft Word (.docx) menggunakan template standar dinas pendidikan yang sudah tertanam di dalam aplikasi.
+   - **Mode Cerdas Online (AI Asisten & Pembuat SK Dinamis):**
+     1. Komputer harus terhubung ke internet saat memanggil AI.
+     2. Dapatkan API Key Gemini resmi Google secara gratis di: [aistudio.google.com/apikey](https://aistudio.google.com/apikey) (Login dengan akun Google/Gmail Anda -> klik **Create API key**).
+     3. Pada aplikasi desktop, buka menu atas **Bantuan** -> klik **Buka Folder Data & Pengaturan (.env)** (atau buka folder `data-sekolah` di sebelah file .exe).
+     4. Buat / buka file bernama `.env` menggunakan Notepad, lalu tulis:
+        ```env
+        GEMINI_API_KEY=AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        ```
+     5. Simpan file (`Ctrl + S`), lalu tutup dan buka kembali aplikasi Anda. Fitur asisten dan pembuatan SK cerdas akan langsung aktif penuh!
 3. **Penyimpanan Data Lokal:**
    Data profil sekolah, logo/kop surat, daftar PTK, dan draf SK tersimpan secara persisten di folder lokal `data-sekolah` atau `%APPDATA%/Aplikasi-SK-Sekolah`. Jangan lupa gunakan menu **"Cadangan Data (Backup)"** untuk menyimpan salinan cadangan berkala ke file `.json`.

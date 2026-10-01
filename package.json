@@ -1,7 +1,9 @@
 {
-  "name": "react-example",
+  "name": "aplikasi-sk-sekolah",
+  "description": "Aplikasi SK dan Surat Tugas Sekolah - SDN 3 Loloan Timur",
+  "author": "Susilo Fitri Yatmoko (Guru Merangkum)",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
@@ -39,9 +41,9 @@
     "autoprefixer": "^10.4.21",
     "concurrently": "^10.0.5",
     "cross-env": "^10.1.0",
-    "electron": "^44.5.1",
+    "electron": "44.5.1",
     "electron-builder": "^26.15.3",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.28.0",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.21.0",
     "typescript": "^7.0.2"

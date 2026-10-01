@@ -3,8 +3,28 @@ import path from "path";
 import fs from "fs";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
+import JSZip from "jszip";
 
 dotenv.config();
+
+// Attempt loading .env from candidate local storage paths (for portable desktop app & local installations)
+function reloadEnvVariables() {
+  const possiblePaths = [
+    path.join(process.cwd(), ".env"),
+    process.env.APP_DATA_PATH ? path.join(process.env.APP_DATA_PATH, ".env") : null,
+    path.join(path.dirname(process.execPath), ".env"),
+    path.join(process.cwd(), "data-sekolah", ".env"),
+  ].filter(Boolean) as string[];
+
+  for (const envPath of possiblePaths) {
+    if (fs.existsSync(envPath)) {
+      try {
+        dotenv.config({ path: envPath, override: false });
+      } catch {}
+    }
+  }
+}
+reloadEnvVariables();
 
 const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
@@ -13,16 +33,26 @@ app.use(express.json({ limit: "10mb" }));
 
 // Initialize Gemini SDK lazily if key is provided
 let aiClient: GoogleGenAI | null = null;
+let currentKeyUsed: string = "";
+
 function getGemini(): GoogleGenAI | null {
-  if (!aiClient && process.env.GEMINI_API_KEY) {
+  if (!process.env.GEMINI_API_KEY) {
+    reloadEnvVariables();
+  }
+  const key = (process.env.GEMINI_API_KEY || "").trim();
+  if (!key) {
+    return null;
+  }
+  if (!aiClient || currentKeyUsed !== key) {
     aiClient = new GoogleGenAI({
-      apiKey: process.env.GEMINI_API_KEY,
+      apiKey: key,
       httpOptions: {
         headers: {
           "User-Agent": "aistudio-build",
         },
       },
     });
+    currentKeyUsed = key;
   }
   return aiClient;
 }
@@ -261,6 +291,151 @@ export const defaultKopSuratSDN3LoloanTimur = ${JSON.stringify(kopSuratUrl)};
   }
 });
 
+// Endpoint: Download file batch untuk membuat exe portabel langsung di Windows
+app.get("/api/download/buat-exe-bat", (_req: Request, res: Response) => {
+  const filePath = path.join(process.cwd(), "BUAT_EXE_PORTABEL.bat");
+  if (fs.existsSync(filePath)) {
+    res.setHeader("Content-Disposition", 'attachment; filename="BUAT_EXE_PORTABEL.bat"');
+    res.setHeader("Content-Type", "application/x-bat");
+    return res.sendFile(filePath);
+  }
+  res.status(404).json({ success: false, error: "File tidak ditemukan" });
+});
+
+// Helper untuk menambahkan folder secara rekursif ke zip
+function addFolderToZip(zipInstance: any, dirPath: string, rootDir: string) {
+  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+  for (const entry of entries) {
+    if (
+      entry.name === "node_modules" ||
+      entry.name === "dist" ||
+      entry.name === "dist-electron" ||
+      entry.name === ".git" ||
+      entry.name === ".DS_Store"
+    ) {
+      continue;
+    }
+    const fullPath = path.join(dirPath, entry.name);
+    const relPath = path.relative(rootDir, fullPath).replace(/\\/g, "/");
+    if (entry.isDirectory()) {
+      addFolderToZip(zipInstance, fullPath, rootDir);
+    } else if (entry.isFile()) {
+      zipInstance.file(relPath, fs.readFileSync(fullPath));
+    }
+  }
+}
+
+// Endpoint: Download Paket Lengkap Proyek Aplikasi (.ZIP) Siap Buat EXE di Windows
+app.get("/api/download/paket-lengkap-zip", async (_req: Request, res: Response) => {
+  try {
+    const zip = new JSZip();
+    const rootDir = process.cwd();
+
+    const rootFiles = [
+      "package.json",
+      "tsconfig.json",
+      "vite.config.ts",
+      "index.html",
+      "server.ts",
+      "electron-builder.json",
+      "BUAT_EXE_PORTABEL.bat",
+      "BUAT_INSTALLER_SETUP.bat",
+      "JALANKAN_DESKTOP_DEV.bat",
+      "PANDUAN_EXE_PORTABEL.md",
+      ".env.example",
+      ".npmrc",
+    ];
+
+    for (const f of rootFiles) {
+      const fullPath = path.join(rootDir, f);
+      if (fs.existsSync(fullPath)) {
+        zip.file(f, fs.readFileSync(fullPath));
+      }
+    }
+
+    for (const folder of ["src", "electron", "public"]) {
+      const folderPath = path.join(rootDir, folder);
+      if (fs.existsSync(folderPath)) {
+        addFolderToZip(zip, folderPath, rootDir);
+      }
+    }
+
+    const zipBuffer = await zip.generateAsync({
+      type: "nodebuffer",
+      compression: "DEFLATE",
+      compressionOptions: { level: 6 },
+    });
+
+    res.setHeader(
+      "Content-Disposition",
+      'attachment; filename="Aplikasi-SK-Sekolah-Lengkap-Siap-Buat-EXE.zip"'
+    );
+    res.setHeader("Content-Type", "application/zip");
+    res.setHeader("Content-Length", zipBuffer.length);
+    return res.end(zipBuffer);
+  } catch (err: any) {
+    console.error("Error creating project zip:", err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Endpoint: Download panduan pembuatan exe portabel
+app.get("/api/download/panduan-exe", (_req: Request, res: Response) => {
+  const filePath = path.join(process.cwd(), "PANDUAN_EXE_PORTABEL.md");
+  if (fs.existsSync(filePath)) {
+    res.setHeader("Content-Disposition", 'attachment; filename="PANDUAN_EXE_PORTABEL.md"');
+    res.setHeader("Content-Type", "text/markdown; charset=utf-8");
+    return res.sendFile(filePath);
+  }
+  res.status(404).json({ success: false, error: "File tidak ditemukan" });
+});
+
+// Endpoint: Cek ketersediaan file EXE hasil build
+app.get("/api/status/portable-exe", (_req: Request, res: Response) => {
+  try {
+    const distDir = path.join(process.cwd(), "dist-electron");
+    if (fs.existsSync(distDir)) {
+      const files = fs.readdirSync(distDir);
+      const exeFile = files.find((f) => f.endsWith(".exe"));
+      if (exeFile) {
+        const stats = fs.statSync(path.join(distDir, exeFile));
+        return res.json({
+          available: true,
+          fileName: exeFile,
+          sizeMb: (stats.size / (1024 * 1024)).toFixed(1),
+          updatedAt: stats.mtime.toISOString(),
+        });
+      }
+    }
+  } catch (e) {
+    console.error("Error checking exe status:", e);
+  }
+  res.json({ available: false });
+});
+
+// Endpoint: Download file EXE portabel langsung jika tersedia
+app.get("/api/download/portable-exe", (_req: Request, res: Response) => {
+  try {
+    const distDir = path.join(process.cwd(), "dist-electron");
+    if (fs.existsSync(distDir)) {
+      const files = fs.readdirSync(distDir);
+      const exeFile = files.find((f) => f.endsWith(".exe"));
+      if (exeFile) {
+        const fullPath = path.join(distDir, exeFile);
+        res.setHeader("Content-Disposition", `attachment; filename="${exeFile}"`);
+        res.setHeader("Content-Type", "application/vnd.microsoft.portable-executable");
+        return res.sendFile(fullPath);
+      }
+    }
+  } catch (e) {
+    console.error("Error serving exe download:", e);
+  }
+  res.status(404).json({
+    success: false,
+    error: "File .exe belum tersedia atau sedang dibuat. Gunakan script BUAT_EXE_PORTABEL.bat atau tunggu hingga selesai.",
+  });
+});
+
 // Endpoint: AI SK Generator
 app.post("/api/gemini/generate-sk", async (req: Request, res: Response) => {
   try {
@@ -361,10 +536,17 @@ Keluarkan HANYA JSON murni yang valid tanpa awalan \`\`\`json atau karakter mark
 
     if (!ai) {
       // Fallback response with realistic, high-fidelity Indonesian school SK structure
+      const fallbackData = generateLocalSKFallback(jenisSK, judulSK, tahunAjaran, sekolah, dataKhusus, employees);
       return res.json({
         success: true,
         source: "local-generator",
-        data: generateLocalSKFallback(jenisSK, judulSK, tahunAjaran, sekolah, dataKhusus, employees),
+        data: {
+          ...fallbackData,
+          aiNotes: [
+            ...(fallbackData.aiNotes || []),
+            "Mode Template Standar Offline: GEMINI_API_KEY belum terpasang di komputer lokal. Format dokumen telah disesuaikan secara otomatis dengan regulasi dinas standar.",
+          ],
+        },
       });
     }
 
@@ -859,9 +1041,12 @@ const handleAssistantChat = async (req: Request, res: Response) => {
   const ai = getGemini();
 
   if (!ai) {
+    const baseReply = getLocalAssistantReply(incomingText);
+    const keyNotice = "\n\n*(Catatan: Asisten saat ini merespons dalam Mode Template Offline karena kunci GEMINI_API_KEY belum terpasang di komputer lokal ini. Seluruh panduan regulasi tetap valid. Untuk mengaktifkan respon cerdas dinamis penuh, Anda dapat memasukkan API Key gratis dari https://aistudio.google.com/apikey ke dalam file .env di folder data aplikasi).*";
     return res.json({
       success: true,
-      reply: getLocalAssistantReply(incomingText),
+      hasApiKey: false,
+      reply: `${baseReply}${keyNotice}`,
     });
   }
 

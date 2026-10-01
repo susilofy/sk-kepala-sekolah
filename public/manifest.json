@@ -1,0 +1,22 @@
+{
+  "short_name": "SK Sekolah",
+  "name": "Aplikasi SK dan Surat Tugas Sekolah - SDN 3 Loloan Timur",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "theme_color": "#1e3a8a",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "description": "Aplikasi resmi penyusunan dan pengelolaan SK dan Surat Tugas Sekolah oleh Susilo Fitri Yatmoko (Guru Merangkum)."
+}

@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
   "appId": "id.sch.sdn3loloantimur.sksekolah",
   "productName": "Aplikasi SK Sekolah",
+  "electronVersion": "44.5.1",
   "copyright": "Copyright © 2025 SD Negeri 3 Loloan Timur",
   "directories": {
     "output": "dist-electron"
@@ -19,6 +20,10 @@
     "target": [
       {
         "target": "portable",
+        "arch": ["x64"]
+      },
+      {
+        "target": "nsis",
         "arch": ["x64"]
       }
     ],

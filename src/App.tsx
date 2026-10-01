@@ -25,6 +25,7 @@ import { TemplatesCatalogView } from "./components/TemplatesCatalogView";
 import { AIAssistantView } from "./components/AIAssistantView";
 import { AdministrasiView } from "./components/AdministrasiView";
 import { SettingsView } from "./components/SettingsView";
+import { PortableExeModal } from "./components/PortableExeModal";
 import { Globe, ExternalLink } from "lucide-react";
 import { generateNextSKNumber } from "./utils/numberGenerator";
 import { cleanSKJudul } from "./utils/skFormatter";
@@ -199,6 +200,7 @@ export default function App() {
   // Navigation & Sub-views
   const [activeTab, setActiveTab] = useState<string>("dashboard");
   const [archiveFilterStatus, setArchiveFilterStatus] = useState<string>("ALL");
+  const [isPortableModalOpen, setIsPortableModalOpen] = useState(false);
   const [isBuildingSK, setIsBuildingSK] = useState<boolean>(false);
   const [previewingDoc, setPreviewingDoc] = useState<SKDocument | null>(null);
   const [editingDoc, setEditingDoc] = useState<SKDocument | null>(null);
@@ -412,6 +414,7 @@ export default function App() {
           setActiveTab(tab);
         }}
         onOpenNewSK={handleOpenNewSK}
+        onOpenPortableModal={() => setIsPortableModalOpen(true)}
         schoolName={schoolProfile.nama}
         headmasterName={schoolProfile.kepalaSekolah.nama}
       />
@@ -459,6 +462,7 @@ export default function App() {
                 onOpenNewSK={handleOpenNewSK}
                 onPreviewSK={handlePreviewSK}
                 onOpenAssistant={() => setActiveTab("assistant")}
+                onOpenPortableModal={() => setIsPortableModalOpen(true)}
                 onNavigateTab={handleNavigateTab}
               />
             )}
@@ -595,6 +599,11 @@ export default function App() {
           </div>
         </div>
       </footer>
+      {/* Modal Aplikasi Portabel EXE */}
+      <PortableExeModal
+        isOpen={isPortableModalOpen}
+        onClose={() => setIsPortableModalOpen(false)}
+      />
     </div>
   );
 }
