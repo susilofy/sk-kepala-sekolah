@@ -1,0 +1,629 @@
+{
+  "updatedAt": "2026-09-22T14:08:15.653Z",
+  "schoolProfile": {
+    "nama": "SD Negeri 3 ",
+    "npsn": "50100742",
+    "nssNis": "101220102003",
+    "status": "Negeri",
+    "alamat": "Jalan kerakatau, Loloan Timur",
+    "desa": "Loloan Timur",
+    "kecamatan": "Jembrana",
+    "kabupaten": "Jembrana",
+    "provinsi": "Bali",
+    "kodePos": "82216",
+    "email": "sdnegeri3loloantimur@gmail.com",
+    "telepon": "-",
+    "website": "-",
+    "pemerintahDaerah": "PEMERINTAH KABUPATEN JEMBRANA",
+    "dinasPendidikan": "DINAS PENDIDIKAN KEPEMUDAAN, DAN OLAHRAGA",
+    "namaKop": "SATUAN PENDIDIKAN FORMAL SD NEGERI 3 LOLOAN TIMUR",
+    "kepalaSekolah": {
+      "nama": "Susilo Fitri Yatmoko, M.Pd",
+      "nip": "19880521 201101 1 010",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "jabatan": "Kepala Sekolah"
+    },
+    "kopSuratUrl": "indexeddb:active",
+    "kopMode": "gambar"
+  },
+  "employees": [
+    {
+      "id": "emp-1",
+      "no": 1,
+      "nama": "Susilo Fitri Yatmoko, M.Pd",
+      "nip": "19880521 201101 1 010",
+      "pangkat": "Pembina",
+      "golongan": "IV/a",
+      "jabatan": "Kepala Sekolah",
+      "jenisPTK": "Kepala Sekolah",
+      "mapel": "Manajerial & Supervisi",
+      "kelas": "-",
+      "statusKepegawaian": "PNS",
+      "jumlahJamAjar": 0,
+      "tugasTambahan": [
+        "Penanggung Jawab Umum",
+        "K3S Pemandu"
+      ]
+    },
+    {
+      "id": "emp-2",
+      "no": 2,
+      "nama": "Ni Ketut Ayu Negariati, S.Pd.",
+      "nip": "198305082024212016",
+      "pangkat": "Ahli Pertama",
+      "golongan": "IX",
+      "jabatan": "Guru Kelas",
+      "jenisPTK": "Guru Kelas",
+      "mapel": "P. Pancasila, Bhs. Indonesia, Matematika, Seni & Budaya, Bhs. Bali",
+      "kelas": "I",
+      "statusKepegawaian": "PPPK",
+      "jumlahJamAjar": 24,
+      "tugasTambahan": [
+        "Wali Kelas I",
+        "Pembina Ekstrakurikuler"
+      ]
+    },
+    {
+      "id": "emp-3",
+      "no": 3,
+      "nama": "Ni Putu Nuning Riasmini, SE.",
+      "nip": "199301192025212050",
+      "pangkat": "-",
+      "golongan": "-",
+      "jabatan": "Guru Kelas",
+      "jenisPTK": "Guru Kelas",
+      "mapel": "P. Pancasila, Bhs. Indonesia, Matematika, Seni & Budaya, Bhs. Bali",
+      "kelas": "II",
+      "statusKepegawaian": "PPPK",
+      "jumlahJamAjar": 26,
+      "tugasTambahan": [
+        "Wali Kelas II",
+        "Pengelola UKS"
+      ]
+    },
+    {
+      "id": "emp-4",
+      "no": 4,
+      "nama": "I Putu Agus Pramana Putra, S.Pd",
+      "nip": "199711062022211001",
+      "pangkat": "Ahli Pertama",
+      "golongan": "IX",
+      "jabatan": "Guru Kelas",
+      "jenisPTK": "Guru Kelas",
+      "mapel": "P. Pancasila, Bhs. Indonesia, Matematika, IPAS, Seni & Budaya, Bhs. Inggris, Bhs. Bali",
+      "kelas": "III",
+      "statusKepegawaian": "PPPK",
+      "jumlahJamAjar": 32,
+      "tugasTambahan": [
+        "Wali Kelas III",
+        "Koordinator P5"
+      ]
+    },
+    {
+      "id": "emp-5",
+      "no": 5,
+      "nama": "Made Ririn Praditha Yanti, S.Pd",
+      "nip": "199803232023211003",
+      "pangkat": "Penata Muda Tk. I",
+      "golongan": "III/b",
+      "jabatan": "Guru Kelas",
+      "jenisPTK": "Guru Kelas",
+      "mapel": "P. Pancasila, Bhs. Indonesia, Matematika, IPAS, Seni & Budaya, Bhs. Inggris, Bhs. Bali",
+      "kelas": "IV",
+      "statusKepegawaian": "PNS",
+      "jumlahJamAjar": 32,
+      "tugasTambahan": [
+        "Wali Kelas IV",
+        "Bendahara BOS"
+      ]
+    },
+    {
+      "id": "emp-6",
+      "no": 6,
+      "nama": "Komang Ayuni, S.Pd",
+      "nip": "198605022022212030",
+      "pangkat": "Ahli Pertama",
+      "golongan": "IX",
+      "jabatan": "Guru Kelas",
+      "jenisPTK": "Guru Kelas",
+      "mapel": "P. Pancasila, Bhs. Indonesia, Matematika, IPAS, Seni & Budaya, Bhs. Inggris, Koding & KA, Bhs. Bali",
+      "kelas": "V",
+      "statusKepegawaian": "PPPK",
+      "jumlahJamAjar": 34,
+      "tugasTambahan": [
+        "Wali Kelas V",
+        "Pembina Pramuka"
+      ]
+    },
+    {
+      "id": "emp-7",
+      "no": 7,
+      "nama": "Ni Putu Leni Sulistya Dewi, S.Pd.",
+      "nip": "198901102022212002",
+      "pangkat": "Ahli Pertama",
+      "golongan": "IX",
+      "jabatan": "Guru Kelas",
+      "jenisPTK": "Guru Kelas",
+      "mapel": "P. Pancasila, Bhs. Indonesia, Matematika, IPAS, Seni & Budaya, Bhs. Inggris, Koding & KA, Bhs. Bali",
+      "kelas": "VI",
+      "statusKepegawaian": "PPPK",
+      "jumlahJamAjar": 34,
+      "tugasTambahan": [
+        "Wali Kelas VI",
+        "Koordinator Kurikulum"
+      ]
+    },
+    {
+      "id": "emp-8",
+      "no": 8,
+      "nama": "Bagus Ratman Syahputra, S.Pd",
+      "nip": "199408252023211006",
+      "pangkat": "Ahli Pertama",
+      "golongan": "IX",
+      "jabatan": "Guru PJOK",
+      "jenisPTK": "Guru Mata Pelajaran",
+      "mapel": "Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK)",
+      "kelas": "I, II, III, IV, V, VI",
+      "statusKepegawaian": "PPPK",
+      "jumlahJamAjar": 24,
+      "tugasTambahan": [
+        "Pembina Prestasi Olahraga",
+        "Koordinator Sarpras Olahraga"
+      ]
+    },
+    {
+      "id": "emp-9",
+      "no": 9,
+      "nama": "Ni Putu Grecia Budi Lestari, S.Pd.",
+      "nip": "199307222024212008",
+      "pangkat": "Ahli Pertama",
+      "golongan": "IX",
+      "jabatan": "Guru Agama Hindu",
+      "jenisPTK": "Guru Mata Pelajaran",
+      "mapel": "Pendidikan Agama Hindu dan Budi Pekerti",
+      "kelas": "I, II, III, IV, V, VI",
+      "statusKepegawaian": "PPPK",
+      "jumlahJamAjar": 24,
+      "tugasTambahan": [
+        "Pembina Keagamaan & Budi Pekerti",
+        "Koordinator Upacara Keagamaan"
+      ]
+    },
+    {
+      "id": "emp-10",
+      "no": 10,
+      "nama": "Made Agus Dewa Ariana",
+      "nip": "199104022025211025",
+      "pangkat": "Pengatur",
+      "golongan": "V",
+      "jabatan": "Pengadministrasian Umum",
+      "jenisPTK": "Tenaga Kependidikan",
+      "mapel": "Administrasi Sekolah & Operator",
+      "kelas": "-",
+      "statusKepegawaian": "PPPK",
+      "jumlahJamAjar": 0,
+      "tugasTambahan": [
+        "Tata Usaha",
+        "DAPODIK",
+        "Aset Daerah & SIMPEDIA",
+        "Membantu Bendahara BOS",
+        "Menjaga Lingkungan"
+      ]
+    },
+    {
+      "id": "emp-11",
+      "no": 11,
+      "nama": "Ni Putu Aulia Putri",
+      "nip": "200409152025212004",
+      "pangkat": "-",
+      "golongan": "-",
+      "jabatan": "Pranata Barang dan Jasa",
+      "jenisPTK": "Tenaga Kependidikan",
+      "mapel": "Pengelolaan Barang, Jasa & Kepegawaian",
+      "kelas": "-",
+      "statusKepegawaian": "PPPK",
+      "jumlahJamAjar": 0,
+      "tugasTambahan": [
+        "Rekap Lapor Bulan",
+        "Rekap Absensi Guru & Pegawai",
+        "Agenda Surat Masuk & Keluar",
+        "Barang dan Jasa",
+        "Beasiswa"
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "id": "sk-062-2025",
+      "nomor": "062/SD3LT.01/VII/2025",
+      "judul": "PEMBAGIAN TUGAS GURU DALAM KEGIATAN PROSES BELAJAR MENGAJAR ATAU BIMBINGAN DAN TUGAS TENAGA KEPENDIDIKAN",
+      "jenisSK": "SK Pembagian Tugas Guru",
+      "tahunAjaran": "2025/2026",
+      "tanggalTetap": "19 Juni 2025",
+      "tempatTetap": "Loloan Timur",
+      "tanggalRapat": "18 Juni 2025",
+      "perihalRapat": "Pembagian Tugas Guru dalam kegiatan proses belajar mengajar atau bimbingan dan tugas tenaga kependidikan di SD Negeri 3 Loloan Timur Tahun Ajaran 2025/2026",
+      "menimbang": [
+        "Bahwa dalam rangka meningkatkan penyelenggaraan proses belajar mengajar dan layanan pendidikan di SD Negeri 3 Loloan Timur Tahun Ajaran 2025/2026, maka perlu Pembagian Tugas Guru dalam kegiatan proses belajar mengajar atau bimbingan dan tugas tenaga kependidikan.",
+        "Bahwa mereka yang namanya tercantum dalam lampiran keputusan ini dipandang cakap dan mampu untuk melaksanakan tugas-tugas tersebut."
+      ],
+      "mengingat": [
+        "Undang-undang Nomor 20 Tahun 2003 tentang Sistem Pendidikan Nasional;",
+        "Peraturan Pemerintah Nomor 4 Tahun 2022 tentang Perubahan Peraturan Pemerintah Nomor 57 Tahun 2021 tentang Standar Nasional Pendidikan;",
+        "Peraturan Menteri Pendidikan Dasar dan Menengah Republik Indonesia Nomor 12 Tahun 2025 tentang Standar Isi pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar dan Jenjang Pendidikan Menengah;",
+        "Peraturan Menteri Pendidikan, Kebudayaan, Riset, dan Teknologi Nomor 16 Tahun 2022 tentang Standar Proses pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar, dan Jenjang Pendidikan Menengah;",
+        "Peraturan Menteri Pendidikan, Kebudayaan, Riset, dan Teknologi Nomor 21 Tahun 2022 tentang Standar Penilaian Pendidikan pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar dan Jenjang Pendidikan Menengah;",
+        "Peraturan Menteri Pendidikan Dasar dan Menengah Republik Indonesia Nomor 10 Tahun 2025 tentang Standar Kompetensi Lulusan pada Pendidikan Anak Usia Dini Jenjang Pendidikan Dasar dan Jenjang Pendidikan Menengah;",
+        "Peraturan Menteri Pendidikan, Kebudayaan, Riset, dan Teknologi Nomor 47 Tahun 2023 tentang Standar Pengelolaan Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar dan Jenjang Pendidikan Menengah;",
+        "Peraturan Menteri Pendidikan, Kebudayaan, Riset, dan Teknologi Nomor 18 Tahun 2023 tentang Standar Pembiayaan Pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar dan Jenjang Pendidikan Menengah;",
+        "Peraturan Menteri Pendidikan Dasar dan Menengah Republik Indonesia Nomor 13 Tahun 2025 tentang Kurikulum pada Pendidikan Anak Usia Dini Jenjang Pendidikan Dasar dan Jenjang Pendidikan Menengah;",
+        "Peraturan Menteri Pendidikan, Kebudayaan, Riset, dan Teknologi Nomor 22 Tahun 2023 tentang Standar Sarana dan Prasarana pada Pendidikan pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar dan Jenjang Pendidikan Menengah;",
+        "Peraturan Menteri Pendidikan dan Kebudayaan Republik Indonesia Nomor 20 Tahun 2018 tentang Penguatan Pendidikan Karakter pada Satuan Pendidikan Formal;",
+        "Peraturan Gubernur Bali Nomor 20 Tahun 2013 Tentang Bahasa, Aksara, Sastra Daerah Bali pada Pendidikan Dasar dan Menengah;",
+        "Keputusan Kepala Dinas Pendidikan Provinsi Bali Nomor : B.10.400.3/4563/UPTD.BPTP/DIKPORA tentang Kalender Pendidikan bagi Sekolah/Madrasah di Provinsi Bali Tahun Ajaran 2025/2026;"
+      ],
+      "memperhatikan": "Saran, usul dan Keputusan Rapat Dewan Guru SD Negeri 3 Loloan Timur tanggal 18 Juni 2025 tentang Pembagian Tugas Guru dalam kegiatan proses belajar mengajar atau bimbingan dan tugas tenaga kependidikan di SD Negeri 3 Loloan Timur Tahun Ajaran 2025/2026",
+      "diktum": [
+        {
+          "poin": "PERTAMA",
+          "isi": "Pembagian tugas-tugas guru dalam kegiatan Proses Pembelajaran seperti tersebut dalam lampiran I keputusan ini."
+        },
+        {
+          "poin": "KEDUA",
+          "isi": "Pembagian Tugas Tambahan Guru Sebagai Wali Kelas K3S dan KKG. seperti tersebut dalam lampiran II keputusan ini."
+        },
+        {
+          "poin": "KETIGA",
+          "isi": "Pembagian Tugas Tenaga Kependidikan seperti tersebut dalam lampiran III keputusan ini."
+        },
+        {
+          "poin": "KEEMPAT",
+          "isi": "Pembagian Tugas Tambahan Pendidik dan Tenaga Kependidikan, seperti tersebut dalam lampiran IV keputusan ini."
+        },
+        {
+          "poin": "KELIMA",
+          "isi": "Masing-masing guru dan tenaga kependidikan melaporkan pelaksanaan tugasnya secara berkala dan tertulis kepada kepala sekolah"
+        },
+        {
+          "poin": "KEENAM",
+          "isi": "Segala biaya yang berkaitan dengan pelaksanaan keputusan ini dibebankan kepada anggaran sekolah"
+        },
+        {
+          "poin": "KETUJUH",
+          "isi": "Apabila dikemudian hari ternyata terdapat kekeliruan dalam keputusan ini akan diadakan perbaikan seperlunya."
+        },
+        {
+          "poin": "DELAPAN",
+          "isi": "Keputusan ini mulai berlaku sejak tanggal ditetapkan."
+        }
+      ],
+      "tembusan": [
+        "Kepala Dinas Dikpora Kabupaten Jembrana di Negara",
+        "Korwil SPF Kecamatan Jembrana di Jembrana",
+        "Pengawas Sekolah Dasar Pembina Gugus",
+        "Ketua Komite SD Negeri 3 Loloan Timur",
+        "Arsip"
+      ],
+      "lampiranList": [
+        {
+          "id": "att-1",
+          "nomorLampiran": "Lampiran I",
+          "judul": "Pembagian Tugas Guru dalam Proses Belajar Mengajar",
+          "jenisLampiran": "pembagian_tugas_guru",
+          "headers": [
+            "No",
+            "Nama / NIP",
+            "Pangkat / Golo-ngan",
+            "Jabatan",
+            "Mata Pelajaran",
+            "Kelas",
+            "Jumlah Jam"
+          ],
+          "rows": [
+            [
+              "1",
+              "Ni Ketut Ayu Negariati, S.Pd.\nNIPPPK. 198305082024212016",
+              "Ahli Pertama\n/IX",
+              "Guru Kelas",
+              "P. Pancasila\nBhs. Indonesia\nMatematika\nSeni & Budaya\nBhs. Bali",
+              "I\nI\nI\nI\nI",
+              "5 jam\n8 jam\n5 jam\n4 jam\n2 jam\nTotal: 24 jam"
+            ],
+            [
+              "2",
+              "Ni Putu Nuning Riasmini, SE.\nNIPPPK: 199301192025212050",
+              "-",
+              "Guru Kelas",
+              "P. Pancasila\nBhs. Indonesia\nMatematika\nSeni & Budaya\nBhs. Bali",
+              "II\nII\nII\nII\nII",
+              "5 jam\n9 jam\n6 jam\n4 jam\n2 jam\nTotal: 26 jam"
+            ],
+            [
+              "3",
+              "I Putu Agus Pramana Putra, S.Pd\nNIPPPK. 199711062022211001",
+              "Ahli Pertama\n/IX",
+              "Guru Kelas",
+              "P. Pancasila\nBhs. Indonesia\nMatematika\nIPAS\nSeni & Budaya\nBhs. Inggris\nBhs. Bali",
+              "III\nIII\nIII\nIII\nIII\nIII\nIII",
+              "5 Jam\n7 Jam\n6 Jam\n6 Jam\n4 Jam\n2 Jam\n2 Jam\nTotal: 32 Jam"
+            ],
+            [
+              "4",
+              "Made Ririn Praditha Yanti, S.Pd\nNIP. 199803232023211003",
+              "Penata Muda Tk.I\n, III/B",
+              "Guru Kelas",
+              "P. Pancasila\nBhs. Indonesia\nMatematika\nIPAS\nSeni & Budaya\nBhs. Inggris\nBhs. Bali",
+              "IV\nIV\nIV\nIV\nIV\nIV\nIV",
+              "5 Jam\n7 Jam\n6 Jam\n6 Jam\n4 Jam\n2 Jam\n2 Jam\nTotal: 32 Jam"
+            ],
+            [
+              "5",
+              "Komang Ayuni, S.Pd\nNIPPPK. 198605022022212030",
+              "Ahli Pertama\n/IX",
+              "Guru Kelas",
+              "P. Pancasila\nBhs. Indonesia\nMatematika\nIPAS\nSeni & Budaya\nBhs. Inggris\nKoding & KA\nBhs. Bali",
+              "V\nV\nV\nV\nV\nV\nV\nV",
+              "5 jam\n7 jam\n6 jam\n6 jam\n4 jam\n2 jam\n2 jam\n2 jam\nTotal: 34 jam"
+            ],
+            [
+              "6",
+              "Ni Putu Leni Sulistya Dewi, S.Pd.\nNIPPPK. 198901102022212002",
+              "Ahli Pertama\n/IX",
+              "Guru Kelas",
+              "P. Pancasila\nBhs. Indonesia\nMatematika\nIPAS\nSeni & Budaya\nBhs. Inggris\nKoding & KA\nBhs. Bali",
+              "VI\nVI\nVI\nVI\nVI\nVI\nVI\nVI",
+              "5 jam\n7 jam\n6 jam\n6 jam\n4 jam\n2 jam\n2 jam\n2 jam\nTotal: 34 jam"
+            ],
+            [
+              "7",
+              "Bagus Ratman Syahputra, S.Pd\nNIPPK. 199408252023211006",
+              "Ahli Pertama\n/IX",
+              "Guru PJOK",
+              "PJOK\nPJOK\nPJOK\nPJOK\nPJOK\nPJOK",
+              "I\nII\nIII\nIV\nV\nVI",
+              "4 jam\n4 jam\n4 jam\n4 jam\n4 jam\n4 jam\nTotal: 24 jam"
+            ],
+            [
+              "8",
+              "Ni Putu Grecia Budi Lestari, S.Pd.\nNIPPPK. 199307222024212008",
+              "Ahli Pertama\n/IX",
+              "Guru Agama Hindu",
+              "Ag. Hindu\nAg. Hindu\nAg. Hindu\nAg. Hindu\nAg. Hindu\nAg. Hindu",
+              "I\nII\nIII\nIV\nV\nVI",
+              "4 jam\n4 jam\n4 jam\n4 jam\n4 jam\n4 jam\nTotal: 24 jam"
+            ]
+          ],
+          "footerNote": "Jumlah Total Seluruh Jam KBM: 230 Jam"
+        },
+        {
+          "id": "att-2",
+          "nomorLampiran": "Lampiran II",
+          "judul": "Pembagian Tugas Tambahan Guru Sebagai Wali Kelas K3S dan KKG",
+          "jenisLampiran": "tugas_tambahan_guru",
+          "headers": [
+            "No",
+            "Nama / NIP",
+            "Pangkat / Gol",
+            "Jabatan",
+            "K 3 S / KKG",
+            "Wali Kelas"
+          ],
+          "rows": [
+            [
+              "1",
+              "Susilo Fitri Yatmoko, M.Pd\nNIP: 19880521 201101 1 010",
+              "Pembina\nIV/a",
+              "Kepala Sekolah",
+              "K 3 S",
+              "Pemandu"
+            ],
+            [
+              "2",
+              "Ni Ketut Ayu Negariati, S.Pd.\nNIPPPK. 198305082024212016",
+              "Ahli Pertama\n/IX",
+              "Guru Kelas",
+              "KKG",
+              "I"
+            ],
+            [
+              "3",
+              "Ni Putu Nuning Riasmini, SE.\nNIPPPK: 199301192025212050",
+              "-",
+              "Guru Kelas",
+              "KKG",
+              "II"
+            ],
+            [
+              "4",
+              "I Putu Agus Pramana Putra, S.Pd\nNIPPPK. 199711062022211001",
+              "Ahli Pertama\n/IX",
+              "Guru Kelas",
+              "KKG",
+              "III"
+            ],
+            [
+              "5",
+              "Made Ririn Praditha Yanti, S.Pd\nNIP. 199803232023211003",
+              "Penata Muda Tk.I\n, III/B",
+              "Guru Kelas",
+              "KKG",
+              "IV"
+            ],
+            [
+              "6",
+              "Komang Ayuni, S.Pd\nNIPPPK. 198605022022212030",
+              "Ahli Pertama\n/IX",
+              "Guru Kelas",
+              "KKG",
+              "V"
+            ],
+            [
+              "7",
+              "Ni Putu Leni Sulistya Dewi, S.Pd.\nNIPPPK. 198901102022212002",
+              "Ahli Pertama\n/IX",
+              "Guru Kelas",
+              "KKG",
+              "VI"
+            ],
+            [
+              "8",
+              "Bagus Ratman Syahputra, S.Pd\nNIPPK. 199408252023211006",
+              "Ahli Pertama\n/IX",
+              "Guru PJOK",
+              "KKG",
+              "Pembina Olahraga"
+            ],
+            [
+              "9",
+              "Ni Putu Grecia Budi Lestari, S.Pd.\nNIPPPK. 199307222024212008",
+              "Ahli Pertama\n/IX",
+              "Guru Agama Hindu",
+              "KKG",
+              "Pembina Keagamaan"
+            ]
+          ]
+        },
+        {
+          "id": "att-3",
+          "nomorLampiran": "Lampiran III",
+          "judul": "Pembagian Tugas Tenaga Kependidikan",
+          "jenisLampiran": "tenaga_kependidikan",
+          "headers": [
+            "No",
+            "Nama / NIP",
+            "Pangkat / Gol",
+            "Jabatan",
+            "Bidang Tugas",
+            "Ket."
+          ],
+          "rows": [
+            [
+              "1",
+              "Made Agus Dewa Ariana\nNIPPPK. 19910402 2025211025",
+              "Pengatur\n/V",
+              "Pengadministrasian Umum",
+              "● Tata Usaha\n● DAPODIK\n● Aset daerah & SIMPEDIA\n● Membantu Bendahara BOS\n● Menjaga lingkungan",
+              "-"
+            ],
+            [
+              "2",
+              "Ni Putu Aulia Putri\nNIPPPK. 200409152025212004",
+              "-",
+              "Pranata Barang Dan Jasa",
+              "● Rekap Lapor Bulan\n● Rekap Absensi Guru & Pegawai\n● Agenda Surat masuk & Keluar\n● Barang dan jasa\n● Beasiswa",
+              "-"
+            ]
+          ]
+        },
+        {
+          "id": "att-4",
+          "nomorLampiran": "Lampiran IV",
+          "judul": "Pembagian Tugas Tambahan Pendidik dan Tenaga Kependidikan",
+          "jenisLampiran": "tugas_tambahan_ptk",
+          "headers": [
+            "No",
+            "Nama / NIP",
+            "Pangkat / Gol",
+            "Jabatan",
+            "Tugas / Seksi",
+            "Ket."
+          ],
+          "rows": [
+            [
+              "1",
+              "Susilo Fitri Yatmoko, M.Pd\nNIP: 19880521 201101 1 010",
+              "Pembina\nIV/a",
+              "Kepala Sekolah",
+              "● Penanggung Jawab Umum\n● Manajerial & Supervisi",
+              "-"
+            ],
+            [
+              "2",
+              "Made Ririn Praditha Yanti, S.Pd\nNIP. 199803232023211003",
+              "Penata Muda Tk.I\n, III/B",
+              "Guru Kelas",
+              "● Bendahara BOS\n● Wali Kelas IV",
+              "-"
+            ],
+            [
+              "3",
+              "Made Agus Dewa Ariana\nNIPPPK. 19910402 2025211025",
+              "Pengatur\n/V",
+              "Pengadministrasian Umum",
+              "● Operator Dapodik\n● Aset Daerah & SIMPEDIA\n● Membantu Bendahara BOS",
+              "-"
+            ],
+            [
+              "4",
+              "Ni Putu Aulia Putri\nNIPPPK. 200409152025212004",
+              "-",
+              "Pranata Barang Dan Jasa",
+              "● Tata Usaha & Kearsipan Surat\n● Pengelola Beasiswa PIP\n● Rekap Absensi Pegawai",
+              "-"
+            ],
+            [
+              "5",
+              "Komang Ayuni, S.Pd\nNIPPPK. 198605022022212030",
+              "Ahli Pertama\n/IX",
+              "Guru Kelas",
+              "● Pembina Pramuka\n● Wali Kelas V",
+              "-"
+            ],
+            [
+              "6",
+              "Ni Putu Leni Sulistya Dewi, S.Pd.\nNIPPPK. 198901102022212002",
+              "Ahli Pertama\n/IX",
+              "Guru Kelas",
+              "● Koordinator Kurikulum & P5\n● Wali Kelas VI",
+              "-"
+            ],
+            [
+              "7",
+              "Bagus Ratman Syahputra, S.Pd\nNIPPK. 199408252023211006",
+              "Ahli Pertama\n/IX",
+              "Guru PJOK",
+              "● Pembina Prestasi Olahraga\n● Koordinator Sarpras Olahraga",
+              "-"
+            ],
+            [
+              "8",
+              "Ni Putu Grecia Budi Lestari, S.Pd.\nNIPPPK. 199307222024212008",
+              "Ahli Pertama\n/IX",
+              "Guru Agama Hindu",
+              "● Pembina Keagamaan & Budi Pekerti\n● Upacara Keagamaan",
+              "-"
+            ]
+          ]
+        }
+      ],
+      "status": "published",
+      "kepalaSekolah": {
+        "nama": "Susilo Fitri Yatmoko, M.Pd",
+        "nip": "19880521 201101 1 010",
+        "pangkat": "Pembina",
+        "golongan": "IV/a",
+        "jabatan": "Kepala Sekolah"
+      },
+      "sekolah": {
+        "nama": "SD Negeri 3 Loloan Timur",
+        "alamat": "Jalan Gunung Agung, Loloan Timur",
+        "kabupaten": "Jembrana",
+        "kecamatan": "Jembrana"
+      },
+      "aiCheckStatus": "Data lengkap",
+      "aiCheckFindings": [
+        "Semua bagian inti administrasi (Kop, Konsiderans, Dasar Hukum, Memperhatikan, Diktum, Tembusan) telah sesuai.",
+        "4 Lampiran tabel pembagian tugas guru dan PTK telah terisi lengkap."
+      ],
+      "createdAt": "2025-06-19T08:00:00.000Z",
+      "updatedAt": "2025-06-19T10:00:00.000Z"
+    }
+  ],
+  "numberingConfig": {
+    "pattern": "[NOMOR]/[KODE_SEKOLAH]/[BULAN_ROMAWI]/[TAHUN]",
+    "lastNumber": 62,
+    "schoolCode": "SD3LT.01",
+    "resetEveryYear": true
+  }
+}

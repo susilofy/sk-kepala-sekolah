@@ -1,0 +1,8 @@
+{
+  "name": "Aplikasi SK Sekolah - Guru Merangkum",
+  "description": "Aplikasi resmi penyusunan dan pengelolaan Surat Keputusan (SK) Sekolah berbasis AI oleh Susilo Fitri Yatmoko (Guru Merangkum) dengan ekspor Word (.docx).",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

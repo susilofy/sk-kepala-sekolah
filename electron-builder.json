@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "id.sch.sdn3loloantimur.sksekolah",
+  "productName": "Aplikasi SK Sekolah",
+  "copyright": "Copyright © 2025 SD Negeri 3 Loloan Timur",
+  "directories": {
+    "output": "dist-electron"
+  },
+  "files": [
+    "dist/**/*",
+    "electron/**/*",
+    "public/**/*",
+    "package.json"
+  ],
+  "extraMetadata": {
+    "main": "electron/main.cjs"
+  },
+  "win": {
+    "target": [
+      {
+        "target": "portable",
+        "arch": ["x64"]
+      }
+    ],
+    "icon": "public/icon.png"
+  },
+  "portable": {
+    "artifactName": "Aplikasi-SK-Sekolah-Portable.exe",
+    "requestExecutionLevel": "user"
+  },
+  "nsis": {
+    "artifactName": "Aplikasi-SK-Sekolah-Setup.exe",
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Aplikasi SK Sekolah"
+  }
+}
