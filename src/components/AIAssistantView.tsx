@@ -123,6 +123,14 @@ export const AIAssistantView: React.FC<AIAssistantViewProps> = ({
           suggestedAction,
         };
         setMessages((prev) => [...prev, aiMsg]);
+      } else {
+        const errorMsg: Message = {
+          id: `ai-err-${Date.now()}`,
+          sender: "ai",
+          text: resJson.error || resJson.warning || "Mohon maaf, layanan AI sedang mengalami antrean. Silakan coba kembali sesaat lagi.",
+          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        };
+        setMessages((prev) => [...prev, errorMsg]);
       }
     } catch (err) {
       console.error("Assistant chat error:", err);

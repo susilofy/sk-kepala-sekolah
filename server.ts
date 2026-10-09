@@ -1,4 +1,5 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import type { Request, Response } from "express";
 import path from "path";
 import fs from "fs";
 import dotenv from "dotenv";
@@ -64,6 +65,14 @@ const CANDIDATE_TEXT_MODELS = [
   "gemini-flash-latest",
 ];
 
+// Timeout helper to prevent requests from hanging in production Cloud Run
+function withTimeout<T>(promise: Promise<T>, ms: number, errMsg = "Timeout"): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<T>((_, reject) => setTimeout(() => reject(new Error(errMsg)), ms)),
+  ]);
+}
+
 async function generateContentWithFallback(
   ai: GoogleGenAI,
   params: {
@@ -77,11 +86,15 @@ async function generateContentWithFallback(
     // Retry up to 2 attempts for transient conditions (e.g. 503 high demand spike, 429 rate limit)
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
-        const res = await ai.models.generateContent({
-          model: modelName,
-          contents: params.contents,
-          config: params.config,
-        });
+        const res = await withTimeout(
+          ai.models.generateContent({
+            model: modelName,
+            contents: params.contents,
+            config: params.config,
+          }),
+          20000,
+          `Batas waktu pembuatan draf AI ${modelName} habis (20 detik)`
+        );
         if (res.text) {
           return { text: res.text, model: modelName };
         }
@@ -125,7 +138,11 @@ async function createChatWithFallback(
           history: params.history,
           config: params.config,
         });
-        const res = await chat.sendMessage({ message: params.message });
+        const res = await withTimeout(
+          chat.sendMessage({ message: params.message }),
+          20000,
+          `Batas waktu respon asisten AI ${modelName} habis (20 detik)`
+        );
         if (res.text) {
           return { text: res.text, model: modelName };
         }
@@ -1468,11 +1485,12 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
+    const currentDir = typeof __dirname !== "undefined" ? __dirname : path.resolve(".");
     const candidatePaths = [
-      path.join(__dirname, "dist"),
-      path.join(__dirname, "../dist"),
+      path.join(currentDir, "dist"),
+      path.join(currentDir, "../dist"),
       path.join(process.cwd(), "dist"),
-      path.join(__dirname),
+      currentDir,
     ];
     const distPath =
       candidatePaths.find((p) => fs.existsSync(path.join(p, "index.html"))) ||
